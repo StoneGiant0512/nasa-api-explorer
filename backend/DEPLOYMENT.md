@@ -18,7 +18,7 @@
 - **Environment**: `Node`
 - **Region**: Choose closest to your users
 - **Branch**: `main` (or your default branch)
-- **Build Command**: `npm install && npm run build`
+- **Build Command**: `npm ci && npm run build`
 - **Start Command**: `npm start`
 
 ### 3. Environment Variables

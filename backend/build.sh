@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-echo "Installing dependencies..."
-npm install
+echo "Installing all dependencies (including dev dependencies)..."
+npm ci
 
 echo "Building application..."
 npm run build
