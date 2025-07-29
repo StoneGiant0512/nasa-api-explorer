@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig, AxiosError } from 'axios';
 import { config } from '../config/environment';
 import { APODResponse, APODRequest } from '../types/nasa';
 
@@ -20,7 +20,7 @@ export class APODService {
     });
 
     // Add request interceptor to add API key
-    this.api.interceptors.request.use((config) => {
+    this.api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
       config.params = {
         ...config.params,
         api_key: this.apiKey,
@@ -31,7 +31,7 @@ export class APODService {
     // Add response interceptor for error handling
     this.api.interceptors.response.use(
       (response) => response,
-      (error) => {
+      (error: AxiosError) => {
         console.error('NASA APOD API Error:', error.response?.data || error.message);
         throw error;
       }
