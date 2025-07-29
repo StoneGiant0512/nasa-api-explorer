@@ -51,12 +51,13 @@ export class NASAController {
       const { sol, earth_date, camera, page } = req.query;
 
       if (!rover) {
-        return res.status(400).json({
+        res.status(400).json({
           error: 'MISSING_ROVER',
           message: 'Rover parameter is required',
           statusCode: 400,
           timestamp: new Date().toISOString(),
         });
+        return;
       }
 
       const params = {
@@ -229,12 +230,13 @@ export class NASAController {
       const { rover } = req.params;
 
       if (!rover) {
-        return res.status(400).json({
+        res.status(400).json({
           error: 'MISSING_ROVER',
           message: 'Rover parameter is required',
           statusCode: 400,
           timestamp: new Date().toISOString(),
         });
+        return;
       }
 
       const data = await nasaService.getMarsRoverManifest(rover);
@@ -266,12 +268,13 @@ export class NASAController {
       const { identifier, date, image, enhanced } = req.query;
 
       if (!identifier || !date || !image) {
-        return res.status(400).json({
+        res.status(400).json({
           error: 'MISSING_PARAMETERS',
           message: 'identifier, date, and image parameters are required',
           statusCode: 400,
           timestamp: new Date().toISOString(),
         });
+        return;
       }
 
       const imageURL = enhanced === 'true' 
